@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "lib": ["ES2017"],
+        "module": "ESNext",
+        "target": "ES2015",
+        "noEmit": true,
+
+        "moduleResolution": "Node",
+        "resolveJsonModule": true,
+        "checkJs": true,
+
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+
+        "strict": true,
+        "importsNotUsedAsValues": "error",
+        "forceConsistentCasingInFileNames": true,
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true
+    },
+    "exclude": ["node_modules", "tmp"]
+}
