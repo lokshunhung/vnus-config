@@ -18,5 +18,10 @@
         "skipDefaultLibCheck": true,
         "skipLibCheck": true
     },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
     "exclude": ["node_modules", "tmp"]
 }
