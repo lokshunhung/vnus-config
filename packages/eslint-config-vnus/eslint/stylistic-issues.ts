@@ -6,7 +6,7 @@ import type { Linter } from 'eslint';
 // ✨ Customized
 // 🛑 Disabled
 
-const config: Linter.Config = {
+const rulesStylisticIssues: Linter.Config = {
     rules: {
         // ✅ disallow mixed spaces and tabs for indentation
         'no-mixed-spaces-and-tabs': ['error'],
@@ -23,4 +23,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+export default rulesStylisticIssues;

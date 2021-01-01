@@ -6,7 +6,7 @@ import type { Linter } from 'eslint';
 // ✨ Customized
 // 🛑 Disabled
 
-const config: Linter.Config = {
+const rulesBestPractices: Linter.Config = {
     rules: {
         // ✨ 🔧 require the use of `===` and `!==`; only allow `variable == null` (checks `null`, `undefined`)
         eqeqeq: ['error', 'always', { null: 'ignore' }],
@@ -110,4 +110,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+export default rulesBestPractices;

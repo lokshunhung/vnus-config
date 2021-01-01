@@ -7,7 +7,7 @@ import type { Linter } from 'eslint';
 // ✨ Customized
 // 🛑 Disabled
 
-const config: Linter.Config = {
+const rulesRecommended: Linter.Config = {
     rules: {
         // ✅ requires that member overloads be consecutive
         '@typescript-eslint/adjacent-overload-signatures': ['error'],
@@ -192,4 +192,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+export default rulesRecommended;

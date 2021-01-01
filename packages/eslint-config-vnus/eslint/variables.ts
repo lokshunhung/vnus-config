@@ -8,7 +8,7 @@ import type { Linter } from 'eslint';
 // ✨ Customized
 // 🛑 Disabled
 
-const config: Linter.Config = {
+const rulesVariables: Linter.Config = {
     rules: {
         // ✅ disallow deleting variables
         'no-delete-var': ['error'],
@@ -51,4 +51,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+export default rulesVariables;

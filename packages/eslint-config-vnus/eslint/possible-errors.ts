@@ -6,7 +6,7 @@ import type { Linter } from 'eslint';
 // ✨ Customized
 // 🛑 Disabled
 
-const config: Linter.Config = {
+const rulesPossibleErrors: Linter.Config = {
     rules: {
         // ✅ enforce "for" loop update clause moving the counter in the right direction.
         'for-direction': ['error'],
@@ -124,4 +124,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+export default rulesPossibleErrors;
