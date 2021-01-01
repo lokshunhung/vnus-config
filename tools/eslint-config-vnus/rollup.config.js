@@ -1,5 +1,6 @@
 import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginNodeResolve from '@rollup/plugin-node-resolve';
+import pluginReplace from '@rollup/plugin-replace';
 import pluginTypescript from '@rollup/plugin-typescript';
 import * as path from 'path';
 import * as prettier from 'prettier';
@@ -40,6 +41,11 @@ const config = {
         strict: false,
     },
     plugins: [
+        pluginReplace({
+            values: {
+                'process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED': JSON.stringify(false),
+            },
+        }),
         pluginNodeResolve(),
         pluginCommonjs(),
         pluginTypescript({
