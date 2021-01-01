@@ -27,19 +27,19 @@ export function pluginPrettierFormatOutput() {
 }
 
 /**
- * Copies `inputPackageJson` to `options.output.dir`,
+ * Copies `inputPackageJSON` to `options.output.dir`,
  * removes `package.json#devDependencies`, `package.json#optionalDependencies`,
  * adds unresolved dependencies to `package.json#dependencies`,
- * replaces versions of `package.json#dependencies`, `package.json#peerDependencies` with caret versions of `rootPackageJson`.
+ * replaces versions of `package.json#dependencies`, `package.json#peerDependencies` with caret versions of `rootPackageJSON`.
  *
  * @param {{
- *     inputPackageJson: string;
- *     rootPackageJson: string;
+ *     inputPackageJSON: string;
+ *     rootPackageJSON: string;
  * }} options
  * @returns {import('rollup').Plugin}
  */
-export function pluginGeneratePkgJsonWithDependencies(options) {
-    const { inputPackageJson, rootPackageJson } = options;
+export function pluginGeneratePackageJSONWithDependencies(options) {
+    const { inputPackageJSON, rootPackageJSON } = options;
     /** @param {string} m */
     const normalizeImport = (m) => {
         const segments = m.split(/[\\/]/);
@@ -48,10 +48,10 @@ export function pluginGeneratePkgJsonWithDependencies(options) {
     /** @type {prettier.Options | null} */
     let prettierOptions;
     return {
-        name: 'generate-pkg-json-with-dependencies',
+        name: 'generate-package-json-with-dependencies',
         buildStart(options) {
-            this.addWatchFile(inputPackageJson);
-            this.addWatchFile(rootPackageJson);
+            this.addWatchFile(inputPackageJSON);
+            this.addWatchFile(rootPackageJSON);
         },
         async generateBundle(options, bundle, isWrite) {
             if (typeof options.dir !== 'string') {
@@ -60,8 +60,8 @@ export function pluginGeneratePkgJsonWithDependencies(options) {
             if (!prettierOptions) {
                 prettierOptions = await prettier.resolveConfig(process.cwd());
             }
-            const pkg = JSON.parse(await fs.promises.readFile(inputPackageJson, { encoding: 'utf8' }));
-            const rootPkg = JSON.parse(await fs.promises.readFile(rootPackageJson, { encoding: 'utf8' }));
+            const pkg = JSON.parse(await fs.promises.readFile(inputPackageJSON, { encoding: 'utf8' }));
+            const rootPkg = JSON.parse(await fs.promises.readFile(rootPackageJSON, { encoding: 'utf8' }));
             const outputPath = path.join(`${options.dir}`, 'package.json');
 
             const depsSet = new Set();

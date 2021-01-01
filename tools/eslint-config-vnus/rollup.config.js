@@ -1,11 +1,15 @@
-import pluginCommonjs from '@rollup/plugin-commonjs';
+import pluginCommonJS from '@rollup/plugin-commonjs';
 import pluginNodeResolve from '@rollup/plugin-node-resolve';
 import pluginReplace from '@rollup/plugin-replace';
-import pluginTypescript from '@rollup/plugin-typescript';
+import pluginTypeScript from '@rollup/plugin-typescript';
 import * as fs from 'fs';
 import * as path from 'path';
 import { terser as pluginTerser } from 'rollup-plugin-terser';
-import { pluginAddMITLicenseFile, pluginGeneratePkgJsonWithDependencies, pluginPrettierFormatOutput } from '../utils';
+import {
+    pluginAddMITLicenseFile,
+    pluginGeneratePackageJSONWithDependencies,
+    pluginPrettierFormatOutput,
+} from '../utils';
 
 /** @param {string[]} p */
 const joinRoot = (...p) => path.join(__dirname, '../../', ...p);
@@ -40,8 +44,8 @@ const config = {
             },
         }),
         pluginNodeResolve(),
-        pluginCommonjs(),
-        pluginTypescript({
+        pluginCommonJS(),
+        pluginTypeScript({
             tsconfig: joinRoot('tsconfig.json'),
             module: 'ESNext',
             removeComments: true,
@@ -50,9 +54,9 @@ const config = {
             mangle: false,
             compress: false,
         }),
-        pluginGeneratePkgJsonWithDependencies({
-            inputPackageJson: joinPkg('package.json'),
-            rootPackageJson: joinRoot('package.json'),
+        pluginGeneratePackageJSONWithDependencies({
+            inputPackageJSON: joinPkg('package.json'),
+            rootPackageJSON: joinRoot('package.json'),
         }),
         pluginAddMITLicenseFile(),
         pluginPrettierFormatOutput(),
