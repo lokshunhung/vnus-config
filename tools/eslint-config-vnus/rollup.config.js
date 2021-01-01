@@ -7,6 +7,7 @@ import * as path from 'path';
 import { terser as pluginTerser } from 'rollup-plugin-terser';
 import {
     pluginAddMITLicenseFile,
+    pluginCleanOutputDirOnce,
     pluginGeneratePackageJSONWithDependencies,
     pluginPrettierFormatOutput,
 } from '../utils';
@@ -54,6 +55,7 @@ const config = {
             mangle: false,
             compress: false,
         }),
+        pluginCleanOutputDirOnce(),
         pluginGeneratePackageJSONWithDependencies({
             inputPackageJSON: joinPkg('package.json'),
             rootPackageJSON: joinRoot('package.json'),
