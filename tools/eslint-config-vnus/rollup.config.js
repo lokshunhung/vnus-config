@@ -4,7 +4,7 @@ import pluginReplace from '@rollup/plugin-replace';
 import pluginTypescript from '@rollup/plugin-typescript';
 import * as path from 'path';
 import { terser as pluginTerser } from 'rollup-plugin-terser';
-import { pluginPrettierFormatOutput } from '../utils';
+import { pluginGeneratePkgJsonWithDependencies, pluginPrettierFormatOutput } from '../utils';
 
 /** @param {string[]} p */
 const joinRoot = (...p) => path.join(__dirname, '../../', ...p);
@@ -44,6 +44,10 @@ const config = {
         pluginTerser({
             mangle: false,
             compress: false,
+        }),
+        pluginGeneratePkgJsonWithDependencies({
+            inputPackageJson: joinPkg('package.json'),
+            rootPackageJson: joinRoot('package.json'),
         }),
         pluginPrettierFormatOutput(),
     ],

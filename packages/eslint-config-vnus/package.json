@@ -1,0 +1,11 @@
+{
+    "name": "eslint-config-vnus",
+    "version": "0.0.1",
+    "license": "MIT",
+    "peerDependencies": {
+        "@typescript-eslint/eslint-plugin": "*",
+        "@typescript-eslint/parser": "*",
+        "eslint-plugin-eslint-comments": "*",
+        "eslint-plugin-jest": "*"
+    }
+}
