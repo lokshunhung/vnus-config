@@ -1,20 +1,10 @@
 import type { Linter } from 'eslint';
+import configPrettierTypeScriptESLint from 'eslint-config-prettier/@typescript-eslint';
 
-export default {
+const config: Linter.Config = {
     rules: {
-        '@typescript-eslint/brace-style': 'off',
-        '@typescript-eslint/comma-dangle': 'off',
-        '@typescript-eslint/comma-spacing': 'off',
-        '@typescript-eslint/func-call-spacing': 'off',
-        '@typescript-eslint/indent': 'off',
-        '@typescript-eslint/keyword-spacing': 'off',
-        '@typescript-eslint/member-delimiter-style': 'off',
-        '@typescript-eslint/no-extra-parens': 'off',
-        '@typescript-eslint/no-extra-semi': 'off',
-        '@typescript-eslint/quotes': 'off',
-        '@typescript-eslint/semi': 'off',
-        '@typescript-eslint/space-before-function-paren': 'off',
-        '@typescript-eslint/space-infix-ops': 'off',
-        '@typescript-eslint/type-annotation-spacing': 'off',
+        ...configPrettierTypeScriptESLint.rules,
     },
-} as Linter.Config;
+};
+
+export default config;
