@@ -25,6 +25,10 @@ const pluginPrettierFormatOutput = () => {
 const config = {
     input: {
         'eslint-recommended': joinRoot('packages/eslint-config-vnus/eslint-recommended.ts'),
+        'typescript-eslint-recommended': joinRoot('packages/eslint-config-vnus/typescript-eslint-recommended.ts'),
+        'typescript-eslint-with-requiring-type-checking': joinRoot(
+            'packages/eslint-config-vnus/typescript-eslint-with-requiring-type-checking.ts',
+        ),
     },
     output: {
         dir: joinRoot('dist/eslint-config-vnus'),
