@@ -87,6 +87,7 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
             Object.keys(pkg.dependencies || {}).forEach((d) => {
                 depsSet.add(d);
             });
+            ['fs', 'path'].forEach((d) => depsSet.delete(d));
 
             /** @type {Record<string, string>} */
             const dependencies = {};
