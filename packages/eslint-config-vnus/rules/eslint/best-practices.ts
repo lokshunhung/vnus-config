@@ -20,6 +20,9 @@ const rulesBestPractices: Linter.Config = {
         // ✨ disallow the use of `eval()`
         'no-eval': ['error', { allowIndirect: true }],
 
+        // ✨ 🔧 disallow unnecessary calls to `.bind()`
+        'no-extra-bind': ['error'],
+
         // ✅ disallow fallthrough of `case` statements
         'no-fallthrough': ['error'],
 
@@ -40,6 +43,9 @@ const rulesBestPractices: Linter.Config = {
 
         // ✅ disallow octal literals
         'no-octal': ['error'],
+
+        // ✨ disallow octal escape sequences in string literals
+        'no-octal-escape': ['error'],
 
         // ✨ disallow the use of the `__proto__` property; see: https://exploringjs.com/es6/ch_oop-besides-classes.html#_the-two-kinds-of-proto-in-ecmascript-6
         'no-proto': ['error'],
@@ -85,10 +91,18 @@ const rulesBestPractices: Linter.Config = {
                 property: 'pow',
                 message: 'Use the exponentiation operator (**) instead.',
             },
+            {
+                object: 'require',
+                property: 'ensure',
+                message: 'Please use import() instead.',
+            },
         ],
 
         // ✅ disallow assignments where both sides are exactly the same
         'no-self-assign': ['error'],
+
+        // ✨ disallow throwing literals as exceptions
+        'no-throw-literal': ['error'],
 
         // ✨ ✅ 🔧 warn on unused labels
         'no-unused-labels': ['warn'],

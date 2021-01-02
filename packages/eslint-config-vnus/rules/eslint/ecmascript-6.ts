@@ -32,6 +32,9 @@ const rulesECMAScript6: Linter.Config = {
         // ✨ 🔧 disallow unnecessary computed property keys in objects and classes
         'no-useless-computed-key': ['error'],
 
+        // ✨ disallow unnecessary constructors
+        'no-useless-constructor': ['error'],
+
         // ✨ 🔧 disallow unnecessary computed property keys in objects and classes
         'no-useless-rename': ['error'],
 

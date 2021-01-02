@@ -33,8 +33,8 @@ const rulesVariables: Linter.Config = {
         // ✅ disallow identifiers from shadowing restricted names
         'no-shadow-restricted-names': ['error'],
 
-        // 🛑 ✅ too annoying; also checked by typescript
-        'no-undef': 'off',
+        // ✅ disallow the use of undeclared variables unless mentioned in `/*global */` comments
+        'no-undef': ['error'],
 
         // ✨ ✅ disallow unused variables; re-disabled by "@typescript-eslint/no-unused-vars"
         'no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^_+$' }],
