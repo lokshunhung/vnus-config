@@ -6,6 +6,7 @@
         "@typescript-eslint/eslint-plugin": "*",
         "@typescript-eslint/parser": "*",
         "eslint-plugin-eslint-comments": "*",
-        "eslint-plugin-jest": "*"
+        "eslint-plugin-jest": "*",
+        "eslint-plugin-testing-library": "*"
     }
 }
