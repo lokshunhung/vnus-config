@@ -28,10 +28,21 @@ fs.readdirSync(joinPkg('rules'), { encoding: 'utf8' })
         rulesInput[p] = joinPkg(`${p}.ts`);
     });
 
+/** @type {Record<string, string>} */
+const presetsInput = {};
+fs.readdirSync(joinPkg('presets'), { encoding: 'utf8' })
+    .filter((f) => f.endsWith('.ts'))
+    .map((f) => path.basename(f, '.ts'))
+    .map((f) => `presets/${f}`)
+    .forEach((p) => {
+        presetsInput[p] = joinPkg(`${p}.ts`);
+    });
+
 /** @type {import('rollup').RollupOptions} */
 const config = {
     input: {
         ...rulesInput,
+        ...presetsInput,
     },
     output: {
         dir: joinRoot('dist/eslint-config-vnus'),
