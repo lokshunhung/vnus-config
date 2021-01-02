@@ -19,18 +19,19 @@ const joinRoot = (...p) => path.join(__dirname, '../../', ...p);
 const joinPkg = (...p) => path.relative(process.cwd(), joinRoot(`packages/eslint-config-vnus/`, ...p));
 
 /** @type {Record<string, string>} */
-const inputTSFiles = {};
-fs.readdirSync(joinPkg(''), { encoding: 'utf8', withFileTypes: true })
-    .filter((e) => e.isFile())
-    .filter((e) => e.name.endsWith('.ts'))
-    .forEach((e) => {
-        inputTSFiles[e.name.replace(/\.ts$/, '')] = joinPkg(e.name);
+const rulesInput = {};
+fs.readdirSync(joinPkg('rules'), { encoding: 'utf8' })
+    .filter((f) => f.endsWith('.ts'))
+    .map((f) => path.basename(f, '.ts'))
+    .map((f) => `rules/${f}`)
+    .forEach((p) => {
+        rulesInput[p] = joinPkg(`${p}.ts`);
     });
 
 /** @type {import('rollup').RollupOptions} */
 const config = {
     input: {
-        ...inputTSFiles,
+        ...rulesInput,
     },
     output: {
         dir: joinRoot('dist/eslint-config-vnus'),
