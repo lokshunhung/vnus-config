@@ -3,7 +3,7 @@ import type { Linter } from 'eslint';
 const _require = require;
 
 const config: Linter.Config = {
-    plugins: ['jest', 'testing-library'],
+    plugins: ['jest', 'jest-dom', 'testing-library'],
     parserOptions: {
         sourceType: 'module',
         ecmaVersion: 2018,
@@ -18,6 +18,7 @@ const config: Linter.Config = {
     },
     rules: {
         ..._require('../rules/jest-recommended').rules,
+        ..._require('../rules/jest-dom-recommended').rules,
         ..._require('../rules/testing-library-react').rules,
     },
 };
