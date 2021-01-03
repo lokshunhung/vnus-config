@@ -2,5 +2,5 @@ import { execRaw } from '../utils';
 
 execRaw`
     yarn prettier \
-    --write "**/*.ts"
+    --write "packages/eslint-config-vnus/**/*.ts"
 `;
