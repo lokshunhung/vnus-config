@@ -17,7 +17,7 @@ const config: Linter.Config = {
         node: true,
     },
     rules: {
-        ..._require('../rules/jest').rules,
+        ..._require('../rules/jest-recommended').rules,
         ..._require('../rules/testing-library-react').rules,
     },
 };

@@ -1,6 +1,6 @@
-import customConfig from './eslint-comments.rules';
+import customConfig from '../eslint-comments-recommended';
 
-describe('Custom config: eslint-comments/eslint-comments.rules', () => {
+describe('Custom config: eslint-comments-recommended', () => {
     test(`all rule names in "plugin:eslint-comments/recommended" are present`, () => {
         const originalConfig = jest.requireActual('eslint-plugin-eslint-comments');
         expect(originalConfig).toHaveProperty(['configs', 'recommended', 'rules']);

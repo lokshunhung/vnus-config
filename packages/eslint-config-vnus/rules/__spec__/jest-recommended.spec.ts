@@ -1,8 +1,8 @@
-import customConfig from './jest.rules';
+import customConfig from '../jest-recommended';
 
 const deprecatedRules = ['jest/no-try-expect'];
 
-describe('Custom config: jest/jest.rules', () => {
+describe('Custom config: jest-recommended', () => {
     test(`all rule names in "plugin:jest/recommended" are present`, () => {
         const originalConfig = jest.requireActual('eslint-plugin-jest');
         expect(originalConfig).toHaveProperty(['configs', 'recommended']);

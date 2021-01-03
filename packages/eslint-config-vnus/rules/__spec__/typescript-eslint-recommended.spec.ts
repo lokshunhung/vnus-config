@@ -1,8 +1,8 @@
-import customConfig from './typescript-eslint.rules';
+import customConfig from '../typescript-eslint-recommended';
 
 const excluded = ['no-var', 'prefer-const', 'prefer-rest-params', 'prefer-spread'];
 
-describe('Custom config: typescript-eslint/typescript-eslint.rules', () => {
+describe('Custom config: typescript-eslint-recommended', () => {
     describe(`except ${JSON.stringify(excluded)}`, () => {
         test("rule settings for rules not from @typescript-eslint are 'off'", () => {
             const customRules = customConfig.rules;

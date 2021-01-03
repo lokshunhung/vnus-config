@@ -1,6 +1,6 @@
-import customConfig from './testing-library.rules';
+import customConfig from '../testing-library-react';
 
-describe('Custom config: testing-library/testing-library.rules', () => {
+describe('Custom config: testing-library-react', () => {
     test('all rule names in plugin:testing-library/react are present', () => {
         const originalConfig = jest.requireActual('eslint-plugin-testing-library');
         expect(originalConfig).toHaveProperty(['configs', 'react', 'rules']);

@@ -1,6 +1,6 @@
-import customConfig from './eslint.rules';
+import customConfig from '../eslint-recommended';
 
-describe('Custom config: eslint/eslint.rules', () => {
+describe('Custom config: eslint-recommended', () => {
     test(`all rule names in "eslint:recommended" are present`, () => {
         const originalConfig = jest.requireActual('eslint/conf/eslint-recommended');
         expect(originalConfig).toHaveProperty(['rules']);

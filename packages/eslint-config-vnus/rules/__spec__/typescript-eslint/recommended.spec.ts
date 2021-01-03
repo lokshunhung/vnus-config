@@ -1,8 +1,8 @@
-import customConfig from './jest-dom.rules';
+import customConfig from '../../typescript-eslint/recommended';
 
-describe(`Custom config: jest-dom/jest-dom.rules`, () => {
-    test('all rule names in plugin:jest-dom/recommended are present', () => {
-        const originalConfig = jest.requireActual('eslint-plugin-jest-dom');
+describe('Custom config: typescript-eslint/recommended', () => {
+    test('all rule names in plugin:@typescript-eslint/recommended are present', () => {
+        const originalConfig = jest.requireActual('@typescript-eslint/eslint-plugin');
         expect(originalConfig).toHaveProperty(['configs', 'recommended', 'rules']);
 
         const originalRuleNames = Object.keys(originalConfig.configs.recommended.rules);
