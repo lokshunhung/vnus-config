@@ -8,6 +8,7 @@
         "eslint-plugin-eslint-comments": "*",
         "eslint-plugin-jest": "*",
         "eslint-plugin-jest-dom": "*",
+        "eslint-plugin-react": "*",
         "eslint-plugin-testing-library": "*"
     }
 }
