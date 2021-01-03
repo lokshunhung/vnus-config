@@ -31,6 +31,7 @@ const config: Linter.Config = {
         react: { version: 'detect' },
     },
     env: {
+        browser: true,
         node: true,
     },
     rules: {

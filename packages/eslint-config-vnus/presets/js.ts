@@ -7,10 +7,6 @@ const config: Linter.Config = {
     parserOptions: {
         sourceType: 'module',
         ecmaVersion: 2018,
-        ecmaFeatures: { jsx: true },
-    },
-    settings: {
-        react: { version: 'detect' },
     },
     env: {
         node: true,
