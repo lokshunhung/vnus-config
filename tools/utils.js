@@ -43,16 +43,16 @@ export function pluginPrettierFormatOutput() {
  * Copies `inputPackageJSON` to `options.output.dir`,
  * removes `package.json#devDependencies`, `package.json#optionalDependencies`,
  * adds unresolved dependencies to `package.json#dependencies`,
- * replaces versions of `package.json#dependencies`, `package.json#peerDependencies` with caret versions of `rootPackageJSON`.
+ * replaces versions of `package.json#dependencies`, `package.json#peerDependencies` with caret versions of packages resolved from root.
  *
  * @param {{
  *     inputPackageJSON: string;
- *     rootPackageJSON: string;
+ *     rootDirectory: string;
  * }} options
  * @returns {import('rollup').Plugin}
  */
 export function pluginGeneratePackageJSONWithDependencies(options) {
-    const { inputPackageJSON, rootPackageJSON } = options;
+    const { inputPackageJSON, rootDirectory } = options;
     /** @param {string} m */
     const normalizeImport = (m) => {
         const segments = m.split(/[\\/]/);
@@ -64,17 +64,16 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
         name: 'generate-package-json-with-dependencies',
         buildStart(options) {
             this.addWatchFile(inputPackageJSON);
-            this.addWatchFile(rootPackageJSON);
+            this.addWatchFile(path.join(rootDirectory, 'package.json'));
         },
         async generateBundle(options, bundle, isWrite) {
             if (typeof options.dir !== 'string') {
                 throw new Error('Unable to write package.json, make sure "options.output.dir" is set.');
             }
             if (!prettierOptions) {
-                prettierOptions = await prettier.resolveConfig(process.cwd());
+                prettierOptions = await prettier.resolveConfig(rootDirectory);
             }
             const pkg = JSON.parse(await fs.promises.readFile(inputPackageJSON, { encoding: 'utf8' }));
-            const rootPkg = JSON.parse(await fs.promises.readFile(rootPackageJSON, { encoding: 'utf8' }));
             const outputPath = path.join(`${options.dir}`, 'package.json');
 
             const depsSet = new Set();
@@ -92,19 +91,25 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
             /** @type {Record<string, string>} */
             const dependencies = {};
             depsSet.forEach((d) => {
-                if (!(d in rootPkg.devDependencies))
-                    throw new Error(`Unable to find module "${d}" in root package.json#devDependencies.`);
-                const version = rootPkg.devDependencies[d];
-                dependencies[d] = /^\d/.test(version) ? `^${version}` : version;
+                try {
+                    const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
+                    const version = `${require(p).version}`;
+                    dependencies[d] = /^\d/.test(version) ? `^${version}` : version;
+                } catch {
+                    throw new Error(`Cannot resolve module "${d}" from root package.json directory.`);
+                }
             });
 
             /** @type {Record<string, string>} */
             const peerDependencies = {};
             Object.keys(pkg.peerDependencies || {}).forEach((d) => {
-                if (!(d in rootPkg.devDependencies))
-                    throw new Error(`Unable to find module "${d}" in root package.json#devDependencies.`);
-                const version = rootPkg.devDependencies[d];
-                peerDependencies[d] = /^\d/.test(version) ? `^${version}` : version;
+                try {
+                    const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
+                    const version = `${require(p).version}`;
+                    dependencies[d] = /^\d/.test(version) ? `^${version}` : version;
+                } catch {
+                    throw new Error(`Cannot resolve module "${d}" from root package.json directory.`);
+                }
             });
 
             delete pkg.devDependencies;
@@ -125,20 +130,22 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
 }
 
 /**
+ * @param {{ files: Record<string, string> }} options
  * @returns {import('rollup').Plugin}
  */
-export function pluginAddMITLicenseFile() {
+export function pluginCopyFilesToOutDir(options) {
+    const { files } = options;
     return {
-        name: 'add-mit-license-file',
+        name: 'copy-files-to-out-dir',
         async generateBundle(options, bundle, isWrite) {
             if (typeof options.dir !== 'string') {
                 throw new Error('Unable to write LICENSE, make sure "options.output.dir" is set.');
             }
-            const outputPath = path.join(options.dir, 'LICENSE');
-            const contents =
-                'Copyright 2020 Lok Shun Hung\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n';
-            ensureDirectory(path.dirname(outputPath));
-            await fs.promises.writeFile(outputPath, contents, { encoding: 'utf8' });
+            Object.entries(files).map(async ([k, v]) => {
+                const dest = path.join(`${options.dir}`, k);
+                ensureDirectory(path.dirname(dest));
+                await fs.promises.copyFile(v, dest);
+            });
         },
     };
 }

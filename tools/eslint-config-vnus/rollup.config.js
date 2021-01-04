@@ -6,8 +6,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { terser as pluginTerser } from 'rollup-plugin-terser';
 import {
-    pluginAddMITLicenseFile,
     pluginCleanOutputDirOnce,
+    pluginCopyFilesToOutDir,
     pluginGeneratePackageJSONWithDependencies,
     pluginPrettierFormatOutput,
 } from '../utils';
@@ -70,9 +70,13 @@ const config = {
         pluginCleanOutputDirOnce(),
         pluginGeneratePackageJSONWithDependencies({
             inputPackageJSON: joinPkg('package.json'),
-            rootPackageJSON: joinRoot('package.json'),
+            rootDirectory: joinRoot(),
         }),
-        pluginAddMITLicenseFile(),
+        pluginCopyFilesToOutDir({
+            files: {
+                LICENSE: joinPkg('LICENSE'),
+            },
+        }),
         pluginPrettierFormatOutput(),
     ],
 };

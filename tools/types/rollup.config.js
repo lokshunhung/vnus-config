@@ -1,11 +1,6 @@
 import * as path from 'path';
 import pluginDTS from 'rollup-plugin-dts';
-import {
-    pluginAddMITLicenseFile,
-    pluginCleanOutputDirOnce,
-    pluginGeneratePackageJSONWithDependencies,
-    pluginPrettierFormatOutput,
-} from '../utils';
+import { pluginCleanOutputDirOnce, pluginCopyFilesToOutDir, pluginPrettierFormatOutput } from '../utils';
 
 /** @param {string[]} p */
 const joinRoot = (...p) => path.join(__dirname, '../../', ...p);
@@ -28,11 +23,12 @@ const config = {
             respectExternal: true,
         }),
         pluginCleanOutputDirOnce(),
-        pluginGeneratePackageJSONWithDependencies({
-            inputPackageJSON: joinPkg('package.json'),
-            rootPackageJSON: joinRoot('package.json'),
+        pluginCopyFilesToOutDir({
+            files: {
+                LICENSE: joinPkg('LICENSE'),
+                'package.json': joinPkg('package.json'),
+            },
         }),
-        pluginAddMITLicenseFile(),
         pluginPrettierFormatOutput(),
     ],
 };
