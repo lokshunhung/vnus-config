@@ -116,6 +116,13 @@ const config: Linter.Config = {
 
         // ✅ 🔧 enforce valid titles
         'jest/valid-title': 'off',
+
+        //
+        // Overrides
+        //
+        'no-shadow': 'off',
+        '@typescript-eslint/no-non-null-assertion': 'off',
+        '@typescript-eslint/no-shadow': 'off',
     },
 };
 

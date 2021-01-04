@@ -3,7 +3,7 @@ import type { Linter } from 'eslint';
 
 const rulesOverwritesESLintRecommended: Linter.Config = {
     rules: {
-        ...pluginTypeScriptESLint.overrides![0].rules,
+        ...(pluginTypeScriptESLint.overrides as Linter.Config[])[0].rules,
     },
 };
 

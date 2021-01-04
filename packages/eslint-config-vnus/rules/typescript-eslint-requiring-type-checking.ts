@@ -33,23 +33,26 @@ const config: Linter.Config = {
         // ✅ 🔧 💭 warns if a type assertion does not change the type of an expression
         '@typescript-eslint/no-unnecessary-type-assertion': ['error'],
 
-        // ✅ 💭 disallows assigning any to variables and properties
-        '@typescript-eslint/no-unsafe-assignment': ['error'],
+        // 🛑 ✅ 💭 too annoying; allows assigning any to variables and properties
+        '@typescript-eslint/no-unsafe-assignment': 'off',
 
-        // ✅ 💭 disallows calling an any type value
-        '@typescript-eslint/no-unsafe-call': ['error'],
+        // 🛑 ✅ 💭 too annoying; allows calling an any type value
+        '@typescript-eslint/no-unsafe-call': 'off',
 
-        // ✅ 💭 disallows member access on any typed variables
-        '@typescript-eslint/no-unsafe-member-access': ['error'],
+        // 🛑 ✅ 💭 too annoying; allows member access on any typed variables
+        '@typescript-eslint/no-unsafe-member-access': 'off',
 
-        // ✅ 💭 disallows returning any from a function
-        '@typescript-eslint/no-unsafe-return': ['error'],
+        // 🛑 ✅ 💭 too annoying; allows returning any from a function
+        '@typescript-eslint/no-unsafe-return': 'off',
 
         // ✨ 🔧 💭 requires that private members are marked as readonly if they're never modified outside of the constructor
         '@typescript-eslint/prefer-readonly': ['error'],
 
         // ✨ 💭 requires that private members are marked as readonly if they're never modified outside of the constructor
-        '@typescript-eslint/prefer-readonly-parameter-types': ['error'],
+        '@typescript-eslint/prefer-readonly-parameter-types': [
+            'error',
+            { checkParameterProperties: false, ignoreInferredTypes: true },
+        ],
 
         // ✨ 🔧 💭 prefers using type parameter when calling Array#reduce instead of casting
         '@typescript-eslint/prefer-reduce-type-parameter': ['error'],
