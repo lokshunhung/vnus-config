@@ -57,41 +57,6 @@ const rulesBestPractices: Linter.Config = {
         'no-restricted-properties': [
             'error',
             {
-                object: 'global',
-                property: 'isFinite',
-                message: 'Please use Number.isFinite instead',
-            },
-            {
-                object: 'self',
-                property: 'isFinite',
-                message: 'Please use Number.isFinite instead',
-            },
-            {
-                object: 'window',
-                property: 'isFinite',
-                message: 'Please use Number.isFinite instead',
-            },
-            {
-                object: 'global',
-                property: 'isNaN',
-                message: 'Please use Number.isNaN instead',
-            },
-            {
-                object: 'self',
-                property: 'isNaN',
-                message: 'Please use Number.isNaN instead',
-            },
-            {
-                object: 'window',
-                property: 'isNaN',
-                message: 'Please use Number.isNaN instead',
-            },
-            {
-                object: 'Math',
-                property: 'pow',
-                message: 'Use the exponentiation operator (**) instead.',
-            },
-            {
                 object: 'require',
                 property: 'ensure',
                 message: 'Please use import() instead.',
@@ -115,6 +80,9 @@ const rulesBestPractices: Linter.Config = {
 
         // ✅ disallow `with` statements
         'no-with': ['error'],
+
+        // ✨ 🔧 disallow use of the `RegExp` constructor in favor of regular expression literals
+        'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
 
         // ✨ enforce the consistent use of the radix argument when using `parseInt()`
         radix: ['error'],

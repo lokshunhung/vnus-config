@@ -17,7 +17,7 @@ const rulesStylisticIssues: Linter.Config = {
         // ✨ disallow `Object` constructors
         'no-new-object': ['error'],
 
-        // ✨  disallow certain syntax forms (adapted from airbnb style guide)
+        // ✨ disallow certain syntax forms (adapted from airbnb style guide)
         'no-restricted-syntax': [
             'error',
             {
@@ -31,6 +31,18 @@ const rulesStylisticIssues: Linter.Config = {
                     '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
             },
         ],
+
+        // ✨ 🔧 disallow the use of `Math.pow` in favor of the `**` operator
+        'prefer-exponentiation-operator': ['error'],
+
+        // ✨ 🔧 disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead
+        'prefer-object-spread': ['error'],
+
+        // ✨ 🔧 enforce consistent spacing after the `//` or `/*` in a comment
+        'spaced-comment': ['error', 'always', { exceptions: ['-'] }],
+
+        // ✨ 🔧 require or disallow Unicode byte order mark (BOM)
+        'unicode-bom': ['error'],
     },
 };
 

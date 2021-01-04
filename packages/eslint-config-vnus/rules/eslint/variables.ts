@@ -36,6 +36,9 @@ const rulesVariables: Linter.Config = {
         // ✅ disallow the use of undeclared variables unless mentioned in `/*global */` comments
         'no-undef': ['error'],
 
+        // ✨ 🔧 disallow Initializing to undefined
+        'no-undef-init': ['error'],
+
         // ✨ ✅ disallow unused variables; re-disabled by "@typescript-eslint/no-unused-vars"
         'no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^_+$' }],
 
