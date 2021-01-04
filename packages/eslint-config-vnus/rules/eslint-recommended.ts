@@ -6,6 +6,14 @@ import rulesStylisticIssues from './eslint/stylistic-issues';
 import rulesVariables from './eslint/variables';
 
 const config: Linter.Config = {
+    parserOptions: {
+        sourceType: 'module',
+        ecmaVersion: 2018,
+    },
+    env: {
+        commonjs: true,
+        node: true,
+    },
     rules: {
         ...rulesPossibleErrors.rules,
         ...rulesBestPractices.rules,

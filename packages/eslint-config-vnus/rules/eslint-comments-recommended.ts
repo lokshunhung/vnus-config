@@ -1,6 +1,7 @@
 import type { Linter } from 'eslint';
 
 const config: Linter.Config = {
+    plugins: ['eslint-comments'],
     rules: {
         'eslint-comments/disable-enable-pair': 'off',
         'eslint-comments/no-aggregating-enable': 'off',

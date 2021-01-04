@@ -7,6 +7,7 @@ import type { Linter } from 'eslint';
 // 🛑 Disabled
 
 const config: Linter.Config = {
+    plugins: ['jest'],
     rules: {
         // ✨ 🔧 prefer `test` over `it`
         'jest/consistent-test-it': ['warn', { fn: 'test', withinDescribe: 'test' }],

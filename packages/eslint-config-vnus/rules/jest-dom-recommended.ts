@@ -4,6 +4,7 @@ import type { Linter } from 'eslint';
 // 🔧 indicates that a rule is fixable
 
 const config: Linter.Config = {
+    plugins: ['jest-dom'],
     rules: {
         // 👍 🔧 prefer toBeChecked over checking attributes
         'jest-dom/prefer-checked': ['error'],

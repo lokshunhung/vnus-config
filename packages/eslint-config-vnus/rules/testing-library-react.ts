@@ -1,6 +1,7 @@
 import type { Linter } from 'eslint';
 
 const config: Linter.Config = {
+    plugins: ['testing-library'],
     rules: {
         'testing-library/await-async-query': ['warn'],
         'testing-library/await-async-utils': ['warn'],
