@@ -76,33 +76,33 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
             const pkg = JSON.parse(await fs.promises.readFile(inputPackageJSON, { encoding: 'utf8' }));
             const outputPath = path.join(`${options.dir}`, 'package.json');
 
-            const depsSet = new Set();
+            const peerDepsSet = new Set();
             Object.values(bundle).forEach((chunk) => {
                 if ('imports' in chunk && chunk.imports)
                     chunk.imports.forEach((d) => {
-                        depsSet.add(normalizeImport(d));
+                        peerDepsSet.add(normalizeImport(d));
                     });
             });
-            Object.keys(pkg.dependencies || {}).forEach((d) => {
-                depsSet.add(d);
+            Object.keys(pkg.peerDependencies || {}).forEach((d) => {
+                peerDepsSet.add(d);
             });
-            ['fs', 'path'].forEach((d) => depsSet.delete(d));
+            ['fs', 'path'].forEach((d) => peerDepsSet.delete(d));
 
             /** @type {Record<string, string>} */
-            const dependencies = {};
-            depsSet.forEach((d) => {
+            const peerDependencies = {};
+            peerDepsSet.forEach((d) => {
                 try {
                     const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
                     const version = `${require(p).version}`;
-                    dependencies[d] = /^\d/.test(version) ? `^${version}` : version;
+                    peerDependencies[d] = /^\d/.test(version) ? `^${version}` : version;
                 } catch (error) {
                     throw new Error(`Cannot resolve module "${d}" from root package.json directory.`);
                 }
             });
 
             /** @type {Record<string, string>} */
-            const peerDependencies = {};
-            Object.keys(pkg.peerDependencies || {}).forEach((d) => {
+            const dependencies = {};
+            Object.keys(pkg.dependencies || {}).forEach((d) => {
                 try {
                     const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
                     const version = `${require(p).version}`;
