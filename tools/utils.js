@@ -95,7 +95,7 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
                     const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
                     const version = `${require(p).version}`;
                     dependencies[d] = /^\d/.test(version) ? `^${version}` : version;
-                } catch {
+                } catch (error) {
                     throw new Error(`Cannot resolve module "${d}" from root package.json directory.`);
                 }
             });
@@ -107,7 +107,7 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
                     const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
                     const version = `${require(p).version}`;
                     dependencies[d] = /^\d/.test(version) ? `^${version}` : version;
-                } catch {
+                } catch (error) {
                     throw new Error(`Cannot resolve module "${d}" from root package.json directory.`);
                 }
             });
