@@ -8,7 +8,7 @@ const config = {
     ],
     overrides: [
         {
-            files: ['**/*.ts'],
+            files: ['*.ts'],
             parserOptions: {
                 project: './tsconfig.json',
                 tsconfigRootDir: __dirname,
@@ -20,7 +20,7 @@ const config = {
             ],
         },
         {
-            files: ['**/*.spec.js', '**/*.spec.ts'],
+            files: ['*.spec.js', '*.spec.ts'],
             extends: [require.resolve('./tools/dogfood-eslint/jest-recommended')],
         },
     ],
