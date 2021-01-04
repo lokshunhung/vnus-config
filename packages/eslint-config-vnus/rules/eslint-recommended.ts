@@ -11,7 +11,9 @@ const config: Linter.Config = {
         ecmaVersion: 2018,
     },
     env: {
+        browser: true,
         commonjs: true,
+        es6: true,
         node: true,
     },
     rules: {

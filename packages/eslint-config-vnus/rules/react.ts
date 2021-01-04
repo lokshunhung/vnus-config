@@ -11,12 +11,6 @@ const config: Linter.Config = {
     settings: {
         react: { version: 'detect' },
     },
-    env: {
-        browser: true,
-        commonjs: true,
-        es6: true,
-        node: true,
-    },
     rules: {
         ...rulesRecommended.rules,
         ...rulesCustom.rules,
