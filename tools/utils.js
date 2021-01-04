@@ -48,11 +48,11 @@ export function pluginPrettierFormatOutput() {
  * @param {{
  *     inputPackageJSON: string;
  *     rootDirectory: string;
- * }} options
+ * }} pluginOptions
  * @returns {import('rollup').Plugin}
  */
-export function pluginGeneratePackageJSONWithDependencies(options) {
-    const { inputPackageJSON, rootDirectory } = options;
+export function pluginGeneratePackageJSONWithDependencies(pluginOptions) {
+    const { inputPackageJSON, rootDirectory } = pluginOptions;
     /** @param {string} m */
     const normalizeImport = (m) => {
         const segments = m.split(/[\\/]/);
@@ -130,11 +130,11 @@ export function pluginGeneratePackageJSONWithDependencies(options) {
 }
 
 /**
- * @param {{ files: Record<string, string> }} options
+ * @param {{ files: Record<string, string> }} pluginOptions
  * @returns {import('rollup').Plugin}
  */
-export function pluginCopyFilesToOutDir(options) {
-    const { files } = options;
+export function pluginCopyFilesToOutDir(pluginOptions) {
+    const { files } = pluginOptions;
     return {
         name: 'copy-files-to-out-dir',
         async generateBundle(options, bundle, isWrite) {

@@ -34,7 +34,7 @@ declare namespace ESLint {
         settings?: { [name: string]: any };
     }
 
-    interface ConfigOverride<Rules extends RulesRecord = RulesRecord> extends BaseConfig {
+    interface ConfigOverride extends BaseConfig {
         excludedFiles?: string | string[];
         files: string | string[];
     }
