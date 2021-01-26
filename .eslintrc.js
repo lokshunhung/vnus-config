@@ -6,13 +6,13 @@ const config = {
         require.resolve('./tools/dogfood-eslint/eslint-recommended'),
         require.resolve('./tools/dogfood-eslint/prettier-eslint'),
     ],
+    parserOptions: {
+        project: './tsconfig.json',
+        tsconfigRootDir: __dirname,
+    },
     overrides: [
         {
             files: ['*.ts'],
-            parserOptions: {
-                project: './tsconfig.json',
-                tsconfigRootDir: __dirname,
-            },
             extends: [
                 require.resolve('./tools/dogfood-eslint/typescript-eslint-recommended'),
                 require.resolve('./tools/dogfood-eslint/typescript-eslint-requiring-type-checking'),
