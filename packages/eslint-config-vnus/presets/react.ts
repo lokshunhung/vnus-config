@@ -4,6 +4,7 @@ const config: ESLintConfig = {
     extends: [
         require.resolve('../rules/eslint-recommended'),
         require.resolve('../rules/react'),
+        require.resolve('../rules/eslint-comments-recommended'),
         require.resolve('../rules/prettier-eslint'),
         require.resolve('../rules/prettier-react'),
     ],

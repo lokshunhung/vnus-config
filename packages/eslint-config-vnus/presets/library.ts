@@ -1,7 +1,11 @@
 import type { ESLintConfig } from '../../types';
 
 const config: ESLintConfig = {
-    extends: [require.resolve('../rules/eslint-recommended'), require.resolve('../rules/prettier-eslint')],
+    extends: [
+        require.resolve('../rules/eslint-recommended'),
+        require.resolve('../rules/eslint-comments-recommended'),
+        require.resolve('../rules/prettier-eslint'),
+    ],
     overrides: [
         {
             files: ['*.ts'],
