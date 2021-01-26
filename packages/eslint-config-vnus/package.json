@@ -2,15 +2,17 @@
     "name": "eslint-config-vnus",
     "version": "0.0.3",
     "license": "MIT",
-    "peerDependencies": {
+    "dependencies": {
         "@typescript-eslint/eslint-plugin": "*",
         "@typescript-eslint/parser": "*",
-        "eslint": "*",
         "eslint-plugin-eslint-comments": "*",
         "eslint-plugin-jest": "*",
         "eslint-plugin-jest-dom": "*",
         "eslint-plugin-react": "*",
         "eslint-plugin-react-hooks": "*",
         "eslint-plugin-testing-library": "*"
+    },
+    "peerDependencies": {
+        "eslint": "*"
     }
 }
