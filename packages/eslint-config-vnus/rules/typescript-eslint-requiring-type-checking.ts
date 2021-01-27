@@ -13,7 +13,10 @@ const config: Linter.Config = {
         '@typescript-eslint/await-thenable': ['error'],
 
         // ✨ 🔧 💭 requires expressions of type void to appear in statement position
-        '@typescript-eslint/no-confusing-void-expression': ['error'],
+        '@typescript-eslint/no-confusing-void-expression': [
+            'error',
+            { ignoreArrowShorthand: true, ignoreVoidOperator: true },
+        ],
 
         // ✅ 🔧 💭 requires Promise-like values to be handled appropriately
         '@typescript-eslint/no-floating-promises': ['error'],
