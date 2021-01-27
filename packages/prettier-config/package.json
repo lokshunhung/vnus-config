@@ -1,5 +1,10 @@
 {
     "name": "@vnus/prettier-config",
     "version": "0.0.1",
-    "license": "MIT"
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lokshunhung/vnus-config.git",
+        "directory": "packages/prettier-config"
+    }
 }
