@@ -26,8 +26,8 @@ const rulesPossibleErrors: Linter.Config = {
         // ✨ ✅ disallow assignment operators in conditional expressions
         'no-cond-assign': ['error', 'always'],
 
-        // ✨ warns about the use of `console`; allow `console.info`, `console.warn`, `console.error`, `console.time`
-        'no-console': ['warn', { allow: ['info', 'warn', 'error', 'time'] }],
+        // ✨ warns about the use of `console`; allow `console.info`, `console.warn`, `console.error`, `console.time`, `console.timeLog`, `console.timeEnd`
+        'no-console': ['warn', { allow: ['info', 'warn', 'error', 'time', 'timeLog', 'timeEnd'] }],
 
         // ✅ disallow constant expressions in conditions
         'no-constant-condition': ['error'],
