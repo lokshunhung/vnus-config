@@ -65,8 +65,8 @@ const rulesRecommended: Linter.Config = {
         // 🛑 use typescript or jsdoc for type checking
         'react/prop-types': ['error'],
 
-        // prevent missing React when using JSX
-        'react/react-in-jsx-scope': ['error'],
+        // 🛑 use new jsx transform
+        'react/react-in-jsx-scope': 'off',
 
         // 🛑 not useful
         'react/require-render-return': ['error'],
