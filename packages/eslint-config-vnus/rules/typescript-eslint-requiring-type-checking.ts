@@ -78,7 +78,7 @@ const config: Linter.Config = {
         // ✨ 💭 exhaustiveness checking in switch with union type
         '@typescript-eslint/switch-exhaustiveness-check': ['error'],
 
-        // ✅ 💭 enforces template literal expressions to be of string type
+        // ✅ 💭 enforces unbound methods are called with their expected scope
         '@typescript-eslint/unbound-method': ['error'],
 
         //
