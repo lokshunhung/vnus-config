@@ -105,6 +105,9 @@ const config: Linter.Config = {
         // ✨ require test cases and hooks to be inside a `describe` block
         'jest/require-top-level-describe': ['warn'],
 
+        // enforces unbound methods are called with their expected scope
+        'jest/unbound-method': ['warn'],
+
         // 🛑 ✅ too annoying; no need to enforce valid `describe()` callback
         'jest/valid-describe': 'off',
 
@@ -123,6 +126,7 @@ const config: Linter.Config = {
         'no-shadow': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-shadow': 'off',
+        '@typescript-eslint/unbound-method': 'off',
     },
 };
 
