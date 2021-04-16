@@ -52,6 +52,7 @@ const config = {
     },
     plugins: [
         pluginReplace({
+            preventAssignment: true,
             values: {
                 'process.env.ESLINT_CONFIG_PRETTIER_NO_DEPRECATED': JSON.stringify(false),
             },
