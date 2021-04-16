@@ -40,7 +40,15 @@ const rulesVariables: Linter.Config = {
         'no-undef-init': ['error'],
 
         // ✨ ✅ disallow unused variables; re-disabled by "@typescript-eslint/no-unused-vars"
-        'no-unused-vars': ['error', { args: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^_+$' }],
+        'no-unused-vars': [
+            'error',
+            {
+                args: 'after-used',
+                argsIgnorePattern: '^_+$',
+                ignoreRestSiblings: true,
+                varsIgnorePattern: '^_+$',
+            },
+        ],
 
         // ✨ ✅ disallow the use of variables before they are defined; re-disabled by "@typescript-eslint/no-use-before-define"
         'no-use-before-define': [

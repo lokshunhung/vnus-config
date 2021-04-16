@@ -186,7 +186,12 @@ const rulesRecommended: Linter.Config = {
         // ✨ ✅ warns about unused variables
         '@typescript-eslint/no-unused-vars': [
             'error',
-            { args: 'none', ignoreRestSiblings: true, varsIgnorePattern: '^_+$' },
+            {
+                args: 'after-used',
+                argsIgnorePattern: '^_+$',
+                ignoreRestSiblings: true,
+                varsIgnorePattern: '^_+$',
+            },
         ],
         'no-unused-vars': 'off',
     },
