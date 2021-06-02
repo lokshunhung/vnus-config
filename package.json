@@ -5,7 +5,7 @@
     "private": true,
     "devDependencies": {
         "@commitlint/cli": "12.1.4",
-        "@commitlint/config-conventional": "12.1.1",
+        "@commitlint/config-conventional": "12.1.4",
         "@jest/types": "26.6.2",
         "@rollup/plugin-commonjs": "18.0.0",
         "@rollup/plugin-node-resolve": "11.2.1",
