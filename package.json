@@ -4,7 +4,7 @@
     "license": "MIT",
     "private": true,
     "devDependencies": {
-        "@commitlint/cli": "12.1.1",
+        "@commitlint/cli": "12.1.4",
         "@commitlint/config-conventional": "12.1.1",
         "@jest/types": "26.6.2",
         "@rollup/plugin-commonjs": "18.0.0",
