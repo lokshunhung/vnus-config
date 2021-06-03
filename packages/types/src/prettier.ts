@@ -1,3 +1,3 @@
-import type { Options as PrettierConfig } from 'prettier';
+import type { Options as PrettierConfig } from "prettier";
 
 export type { PrettierConfig };

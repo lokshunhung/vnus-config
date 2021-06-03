@@ -1,12 +1,12 @@
-import type { Linter } from 'eslint';
-import rulesOverridesESLintRecommended from './typescript-eslint/overrides-eslint-recommended';
-import rulesRecommended from './typescript-eslint/recommended';
+import type { Linter } from "eslint";
+import rulesOverridesESLintRecommended from "./typescript-eslint/overrides-eslint-recommended";
+import rulesRecommended from "./typescript-eslint/recommended";
 
 const config: Linter.Config = {
-    plugins: ['@typescript-eslint'],
-    parser: '@typescript-eslint/parser',
+    plugins: ["@typescript-eslint"],
+    parser: "@typescript-eslint/parser",
     parserOptions: {
-        sourceType: 'module',
+        sourceType: "module",
         ecmaVersion: 2018,
     },
     rules: {

@@ -1,4 +1,4 @@
-import type { Linter } from 'eslint';
+import type { Linter } from "eslint";
 
 // ✅ Recommended
 // 🔧 Fixable
@@ -9,86 +9,86 @@ import type { Linter } from 'eslint';
 const rulesBestPractices: Linter.Config = {
     rules: {
         // ✨ 🔧 require the use of `===` and `!==`; only allow `variable == null` (checks `null`, `undefined`)
-        eqeqeq: ['error', 'always', { null: 'ignore' }],
+        eqeqeq: ["error", "always", { null: "ignore" }],
 
         // ✅ disallow lexical declarations in case clauses
-        'no-case-declarations': ['error'],
+        "no-case-declarations": ["error"],
 
         // ✅ disallow empty destructuring patterns
-        'no-empty-pattern': ['error'],
+        "no-empty-pattern": ["error"],
 
         // ✨ disallow the use of `eval()`
-        'no-eval': ['error', { allowIndirect: true }],
+        "no-eval": ["error", { allowIndirect: true }],
 
         // ✨ 🔧 disallow unnecessary calls to `.bind()`
-        'no-extra-bind': ['error'],
+        "no-extra-bind": ["error"],
 
         // ✅ disallow fallthrough of `case` statements
-        'no-fallthrough': ['error'],
+        "no-fallthrough": ["error"],
 
         // ✨ 🔧 disallow shorthand type conversions
-        'no-implicit-coercion': ['error', { boolean: false, number: true, string: true, allow: [] }],
+        "no-implicit-coercion": ["error", { boolean: false, number: true, string: true, allow: [] }],
 
         // ✨ disallow the use of `eval()`-like methods
-        'no-implied-eval': ['error'],
+        "no-implied-eval": ["error"],
 
         // ✨ disallow the use of the `__iterator__` property
-        'no-iterator': ['error'],
+        "no-iterator": ["error"],
 
         // ✅ disallow assignments to native objects or read-only global variables
-        'no-global-assign': ['error'],
+        "no-global-assign": ["error"],
 
         // ✅ disallow `new` operators with the `String`, `Number`, and `Boolean` objects
-        'no-new-wrappers': ['error'],
+        "no-new-wrappers": ["error"],
 
         // ✅ disallow octal literals
-        'no-octal': ['error'],
+        "no-octal": ["error"],
 
         // ✨ disallow octal escape sequences in string literals
-        'no-octal-escape': ['error'],
+        "no-octal-escape": ["error"],
 
         // ✨ disallow the use of the `__proto__` property; see: https://exploringjs.com/es6/ch_oop-besides-classes.html#_the-two-kinds-of-proto-in-ecmascript-6
-        'no-proto': ['error'],
+        "no-proto": ["error"],
 
         // ✅ disallow variable redeclaration
-        'no-redeclare': ['error'],
+        "no-redeclare": ["error"],
 
         // disallow certain properties on certain objects
-        'no-restricted-properties': [
-            'error',
+        "no-restricted-properties": [
+            "error",
             {
-                object: 'require',
-                property: 'ensure',
-                message: 'Please use import() instead.',
+                object: "require",
+                property: "ensure",
+                message: "Please use import() instead.",
             },
         ],
 
         // ✅ disallow assignments where both sides are exactly the same
-        'no-self-assign': ['error'],
+        "no-self-assign": ["error"],
 
         // ✨ disallow throwing literals as exceptions
-        'no-throw-literal': ['error'],
+        "no-throw-literal": ["error"],
 
         // ✨ ✅ 🔧 warn on unused labels
-        'no-unused-labels': ['warn'],
+        "no-unused-labels": ["warn"],
 
         // ✅ disallow unnecessary `catch` clauses
-        'no-useless-catch': ['error'],
+        "no-useless-catch": ["error"],
 
         // ✅ disallow unnecessary escape characters
-        'no-useless-escape': ['error'],
+        "no-useless-escape": ["error"],
 
         // ✅ disallow `with` statements
-        'no-with': ['error'],
+        "no-with": ["error"],
 
         // ✨ 🔧 disallow use of the `RegExp` constructor in favor of regular expression literals
-        'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
+        "prefer-regex-literals": ["error", { disallowRedundantWrapping: true }],
 
         // ✨ enforce the consistent use of the radix argument when using `parseInt()`
-        radix: ['error'],
+        radix: ["error"],
 
         // ✨ 🔧 disallow "Yoda" conditions, except range like `0 < x && x <= 10`
-        yoda: ['error', 'never', { exceptRange: true }],
+        yoda: ["error", "never", { exceptRange: true }],
     },
 };
 

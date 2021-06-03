@@ -6,7 +6,7 @@ declare namespace ESLint {
 
     type Severity = 0 | 1 | 2;
 
-    type RuleLevel = Severity | 'off' | 'warn' | 'error';
+    type RuleLevel = Severity | "off" | "warn" | "error";
     type RuleLevelAndOptions<Options extends any[] = any[]> = Prepend<Partial<Options>, RuleLevel>;
 
     type RuleEntry<Options extends any[] = any[]> = RuleLevel | RuleLevelAndOptions<Options>;
@@ -23,7 +23,7 @@ declare namespace ESLint {
         $schema?: string;
         env?: { [name: string]: boolean };
         extends?: string | string[];
-        globals?: { [name: string]: boolean | 'readonly' | 'readable' | 'writable' | 'writeable' };
+        globals?: { [name: string]: boolean | "readonly" | "readable" | "writable" | "writeable" };
         noInlineConfig?: boolean;
         overrides?: ConfigOverride[];
         parser?: string;
@@ -46,7 +46,7 @@ declare namespace ESLint {
 
     interface ParserOptions {
         ecmaVersion?: 3 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020;
-        sourceType?: 'script' | 'module';
+        sourceType?: "script" | "module";
         ecmaFeatures?: {
             globalReturn?: boolean;
             impliedStrict?: boolean;

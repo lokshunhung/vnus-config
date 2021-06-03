@@ -1,4 +1,4 @@
-import type { Linter } from 'eslint';
+import type { Linter } from "eslint";
 
 // ✅ Recommended
 // 🔧 Fixable
@@ -9,40 +9,40 @@ import type { Linter } from 'eslint';
 const rulesStylisticIssues: Linter.Config = {
     rules: {
         // ✨ disallow `Array` constructors
-        'no-array-constructor': ['error'],
+        "no-array-constructor": ["error"],
 
         // ✅ disallow mixed spaces and tabs for indentation
-        'no-mixed-spaces-and-tabs': ['error'],
+        "no-mixed-spaces-and-tabs": ["error"],
 
         // ✨ disallow `Object` constructors
-        'no-new-object': ['error'],
+        "no-new-object": ["error"],
 
         // ✨ disallow certain syntax forms (adapted from airbnb style guide)
-        'no-restricted-syntax': [
-            'error',
+        "no-restricted-syntax": [
+            "error",
             {
-                selector: 'ForInStatement',
+                selector: "ForInStatement",
                 message:
-                    'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+                    "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.",
             },
             {
-                selector: 'WithStatement',
+                selector: "WithStatement",
                 message:
-                    '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+                    "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
             },
         ],
 
         // ✨ 🔧 disallow the use of `Math.pow` in favor of the `**` operator
-        'prefer-exponentiation-operator': ['error'],
+        "prefer-exponentiation-operator": ["error"],
 
         // ✨ 🔧 disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead
-        'prefer-object-spread': ['error'],
+        "prefer-object-spread": ["error"],
 
         // ✨ 🔧 enforce consistent spacing after the `//` or `/*` in a comment
-        'spaced-comment': ['error', 'always', { exceptions: ['-'] }],
+        "spaced-comment": ["error", "always", { exceptions: ["-"] }],
 
         // ✨ 🔧 require or disallow Unicode byte order mark (BOM)
-        'unicode-bom': ['error'],
+        "unicode-bom": ["error"],
     },
 };
 

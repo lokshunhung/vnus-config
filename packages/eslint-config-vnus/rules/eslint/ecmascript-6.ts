@@ -1,4 +1,4 @@
-import type { Linter } from 'eslint';
+import type { Linter } from "eslint";
 
 // ✅ Recommended
 // 🔧 Fixable
@@ -9,55 +9,55 @@ import type { Linter } from 'eslint';
 const rulesECMAScript6: Linter.Config = {
     rules: {
         // ✅ require `super()` calls in constructors
-        'constructor-super': ['error'],
+        "constructor-super": ["error"],
 
         // ✅ disallow reassigning class members
-        'no-class-assign': ['error'],
+        "no-class-assign": ["error"],
 
         // ✅ disallow reassigning `const` variables
-        'no-const-assign': ['error'],
+        "no-const-assign": ["error"],
 
         // ✅ disallow duplicate class members
-        'no-dupe-class-members': ['error'],
+        "no-dupe-class-members": ["error"],
 
         // 🛑 use "import/no-duplicates"
-        'no-duplicate-imports': 'off',
+        "no-duplicate-imports": "off",
 
         // ✅ disallow `new` operators with the `Symbol` object
-        'no-new-symbol': ['error'],
+        "no-new-symbol": ["error"],
 
         // ✅ disallow `this`/`super` before calling `super()` in constructors
-        'no-this-before-super': ['error'],
+        "no-this-before-super": ["error"],
 
         // ✨ 🔧 disallow unnecessary computed property keys in objects and classes
-        'no-useless-computed-key': ['error'],
+        "no-useless-computed-key": ["error"],
 
         // ✨ disallow unnecessary constructors
-        'no-useless-constructor': ['error'],
+        "no-useless-constructor": ["error"],
 
         // ✨ 🔧 disallow unnecessary computed property keys in objects and classes
-        'no-useless-rename': ['error'],
+        "no-useless-rename": ["error"],
 
         // ✨ 🔧 require `let` or `const` instead of `var`
-        'no-var': ['error'],
+        "no-var": ["error"],
 
         // ✨ 🔧 require or disallow method and property shorthand syntax for object literals
-        'object-shorthand': ['error'],
+        "object-shorthand": ["error"],
 
         // ✨ 🔧 require `const` declarations for variables that are never reassigned after declared
-        'prefer-const': ['error'],
+        "prefer-const": ["error"],
 
         // ✨ require spread operators instead of `.apply()`
-        'prefer-spread': ['error'],
+        "prefer-spread": ["error"],
 
         // ✅ require generator functions to contain `yield`
-        'require-yield': ['error'],
+        "require-yield": ["error"],
 
         // 🛑 ✨ 🔧 too annoying; do not warn about sorted import declarations within modules
-        'sort-imports': 'off',
+        "sort-imports": "off",
 
         // ✨ require symbol descriptions
-        'symbol-description': ['error'],
+        "symbol-description": ["error"],
     },
 };
 

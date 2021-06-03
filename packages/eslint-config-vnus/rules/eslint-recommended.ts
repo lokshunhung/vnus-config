@@ -1,13 +1,13 @@
-import type { Linter } from 'eslint';
-import rulesBestPractices from './eslint/best-practices';
-import rulesECMAScript6 from './eslint/ecmascript-6';
-import rulesPossibleErrors from './eslint/possible-errors';
-import rulesStylisticIssues from './eslint/stylistic-issues';
-import rulesVariables from './eslint/variables';
+import type { Linter } from "eslint";
+import rulesBestPractices from "./eslint/best-practices";
+import rulesECMAScript6 from "./eslint/ecmascript-6";
+import rulesPossibleErrors from "./eslint/possible-errors";
+import rulesStylisticIssues from "./eslint/stylistic-issues";
+import rulesVariables from "./eslint/variables";
 
 const config: Linter.Config = {
     parserOptions: {
-        sourceType: 'module',
+        sourceType: "module",
         ecmaVersion: 2018,
     },
     env: {

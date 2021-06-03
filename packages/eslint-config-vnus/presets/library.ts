@@ -1,23 +1,23 @@
-import type { ESLintConfig } from '../../types';
+import type { ESLintConfig } from "../../types";
 
 const config: ESLintConfig = {
     extends: [
-        require.resolve('../rules/eslint-recommended'),
-        require.resolve('../rules/eslint-comments-recommended'),
-        require.resolve('../rules/prettier-eslint'),
+        require.resolve("../rules/eslint-recommended"),
+        require.resolve("../rules/eslint-comments-recommended"),
+        require.resolve("../rules/prettier-eslint"),
     ],
     overrides: [
         {
-            files: ['*.ts'],
+            files: ["*.ts"],
             extends: [
-                require.resolve('../rules/typescript-eslint-recommended'),
-                require.resolve('../rules/typescript-eslint-requiring-type-checking'),
-                require.resolve('../rules/prettier-typescript-eslint'),
+                require.resolve("../rules/typescript-eslint-recommended"),
+                require.resolve("../rules/typescript-eslint-requiring-type-checking"),
+                require.resolve("../rules/prettier-typescript-eslint"),
             ],
         },
         {
-            files: ['*.spec.js', '*.spec.ts'],
-            extends: [require.resolve('../rules/jest-recommended')],
+            files: ["*.spec.js", "*.spec.ts"],
+            extends: [require.resolve("../rules/jest-recommended")],
         },
     ],
 };

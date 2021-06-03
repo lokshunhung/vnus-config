@@ -1,7 +1,7 @@
-import customConfig from '../../typescript-eslint/overrides-eslint-recommended';
+import customConfig from "../../typescript-eslint/overrides-eslint-recommended";
 
 describe(`Custom config: typescript-eslint/overrides-eslint-recommended`, () => {
-    test('has rules', () => {
+    test("has rules", () => {
         expect(Object.entries(customConfig.rules!)).not.toHaveLength(0);
     });
 });

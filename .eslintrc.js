@@ -1,27 +1,27 @@
-require('ts-node').register({ transpileOnly: true });
+require("ts-node").register({ transpileOnly: true });
 
 /** @type {import('./packages/types').ESLintConfig} */
 const config = {
     extends: [
-        require.resolve('./tools/dogfood-eslint/eslint-recommended'),
-        require.resolve('./tools/dogfood-eslint/prettier-eslint'),
+        require.resolve("./tools/dogfood-eslint/eslint-recommended"),
+        require.resolve("./tools/dogfood-eslint/prettier-eslint"),
     ],
     parserOptions: {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
         tsconfigRootDir: __dirname,
     },
     overrides: [
         {
-            files: ['*.ts'],
+            files: ["*.ts"],
             extends: [
-                require.resolve('./tools/dogfood-eslint/typescript-eslint-recommended'),
-                require.resolve('./tools/dogfood-eslint/typescript-eslint-requiring-type-checking'),
-                require.resolve('./tools/dogfood-eslint/prettier-typescript-eslint.js'),
+                require.resolve("./tools/dogfood-eslint/typescript-eslint-recommended"),
+                require.resolve("./tools/dogfood-eslint/typescript-eslint-requiring-type-checking"),
+                require.resolve("./tools/dogfood-eslint/prettier-typescript-eslint.js"),
             ],
         },
         {
-            files: ['*.spec.js', '*.spec.ts'],
-            extends: [require.resolve('./tools/dogfood-eslint/jest-recommended')],
+            files: ["*.spec.js", "*.spec.ts"],
+            extends: [require.resolve("./tools/dogfood-eslint/jest-recommended")],
         },
     ],
 };

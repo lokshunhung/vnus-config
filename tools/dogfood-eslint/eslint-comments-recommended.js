@@ -1,1 +1,1 @@
-module.exports = require('../../packages/eslint-config-vnus/rules/eslint-comments-recommended').default;
+module.exports = require("../../packages/eslint-config-vnus/rules/eslint-comments-recommended").default;

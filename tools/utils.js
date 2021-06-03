@@ -1,12 +1,12 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as prettier from 'prettier';
+import * as fs from "fs";
+import * as path from "path";
+import * as prettier from "prettier";
 
 /**
  * @param {string} directory
  */
 function cleanDirectory(directory) {
-    const nodeMajorVersion = Number(process.version.replace(/^v/, '').split('.')[0]);
+    const nodeMajorVersion = Number(process.version.replace(/^v/, "").split(".")[0]);
     if (nodeMajorVersion >= 14) {
         fs.rmSync(directory, { recursive: true, force: true });
     } else {
@@ -31,7 +31,7 @@ export function pluginPrettierFormatOutput() {
     /** @type {prettier.Options | null} */
     let prettierOptions;
     return {
-        name: 'prettier-format-output',
+        name: "prettier-format-output",
         async renderChunk(code, chunk, options) {
             if (!prettierOptions) prettierOptions = await prettier.resolveConfig(process.cwd());
             return { code: prettier.format(code, { ...prettierOptions, filepath: chunk.fileName }) };
@@ -56,29 +56,29 @@ export function pluginGeneratePackageJSONWithDependencies(pluginOptions) {
     /** @param {string} m */
     const normalizeImport = (m) => {
         const segments = m.split(/[\\/]/);
-        return `${segments[0]}`.startsWith('@') ? `${segments[0]}/${segments[1]}` : `${segments[0]}`;
+        return `${segments[0]}`.startsWith("@") ? `${segments[0]}/${segments[1]}` : `${segments[0]}`;
     };
     /** @type {prettier.Options | null} */
     let prettierOptions;
     return {
-        name: 'generate-package-json-with-dependencies',
+        name: "generate-package-json-with-dependencies",
         buildStart(options) {
             this.addWatchFile(inputPackageJSON);
-            this.addWatchFile(path.join(rootDirectory, 'package.json'));
+            this.addWatchFile(path.join(rootDirectory, "package.json"));
         },
         async generateBundle(options, bundle, isWrite) {
-            if (typeof options.dir !== 'string') {
+            if (typeof options.dir !== "string") {
                 throw new Error('Unable to write package.json, make sure "options.output.dir" is set.');
             }
             if (!prettierOptions) {
                 prettierOptions = await prettier.resolveConfig(rootDirectory);
             }
-            const pkg = JSON.parse(await fs.promises.readFile(inputPackageJSON, { encoding: 'utf8' }));
-            const outputPath = path.join(`${options.dir}`, 'package.json');
+            const pkg = JSON.parse(await fs.promises.readFile(inputPackageJSON, { encoding: "utf8" }));
+            const outputPath = path.join(`${options.dir}`, "package.json");
 
             const peerDepsSet = new Set();
             Object.values(bundle).forEach((chunk) => {
-                if ('imports' in chunk && chunk.imports)
+                if ("imports" in chunk && chunk.imports)
                     chunk.imports.forEach((d) => {
                         peerDepsSet.add(normalizeImport(d));
                     });
@@ -86,13 +86,13 @@ export function pluginGeneratePackageJSONWithDependencies(pluginOptions) {
             Object.keys(pkg.peerDependencies || {}).forEach((d) => {
                 peerDepsSet.add(d);
             });
-            ['fs', 'path'].forEach((d) => peerDepsSet.delete(d));
+            ["fs", "path"].forEach((d) => peerDepsSet.delete(d));
 
             /** @type {Record<string, string>} */
             const peerDependencies = {};
             peerDepsSet.forEach((d) => {
                 try {
-                    const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
+                    const p = require.resolve(path.join(d, "package.json"), { paths: [rootDirectory] });
                     const version = `${require(p).version}`;
                     peerDependencies[d] = /^\d/.test(version) ? `^${version}` : version;
                 } catch (error) {
@@ -104,7 +104,7 @@ export function pluginGeneratePackageJSONWithDependencies(pluginOptions) {
             const dependencies = {};
             Object.keys(pkg.dependencies || {}).forEach((d) => {
                 try {
-                    const p = require.resolve(path.join(d, 'package.json'), { paths: [rootDirectory] });
+                    const p = require.resolve(path.join(d, "package.json"), { paths: [rootDirectory] });
                     const version = `${require(p).version}`;
                     dependencies[d] = /^\d/.test(version) ? `^${version}` : version;
                 } catch (error) {
@@ -136,9 +136,9 @@ export function pluginGeneratePackageJSONWithDependencies(pluginOptions) {
 export function pluginCopyFilesToOutDir(pluginOptions) {
     const { files } = pluginOptions;
     return {
-        name: 'copy-files-to-out-dir',
+        name: "copy-files-to-out-dir",
         async generateBundle(options, bundle, isWrite) {
-            if (typeof options.dir !== 'string') {
+            if (typeof options.dir !== "string") {
                 throw new Error('Unable to write LICENSE, make sure "options.output.dir" is set.');
             }
             Object.entries(files).map(async ([k, v]) => {
@@ -156,10 +156,10 @@ export function pluginCopyFilesToOutDir(pluginOptions) {
 export function pluginCleanOutputDirOnce() {
     let hasCleaned = false;
     return {
-        name: 'clean-output-dir-once',
+        name: "clean-output-dir-once",
         outputOptions(options) {
             if (!hasCleaned) {
-                if (typeof options.dir !== 'string') {
+                if (typeof options.dir !== "string") {
                     throw new Error('Cannot clean output dir, make sure "options.output.dir" is set.');
                 }
                 cleanDirectory(options.dir);
