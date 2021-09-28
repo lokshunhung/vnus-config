@@ -15,7 +15,7 @@ const rulesRecommended: Linter.Config = {
         // ✨ 🔧 requires using T[] for arrays, Array<T & U> for non-simple array types
         "@typescript-eslint/array-type": ["error", { default: "array-simple", readonly: "array-simple" }],
 
-        // ✅ bans @ts-<directive> comments from being used or requires descriptions after directive
+        // ✨ ✅ bans @ts-<directive> comments from being used or requires descriptions after directive
         "@typescript-eslint/ban-ts-comment": [
             "error",
             {
