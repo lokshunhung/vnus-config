@@ -39,7 +39,7 @@ const rulesStylisticIssues: Linter.Config = {
         "prefer-object-spread": ["error"],
 
         // ✨ 🔧 enforce consistent spacing after the `//` or `/*` in a comment
-        "spaced-comment": ["error", "always", { exceptions: ["-"] }],
+        "spaced-comment": ["error", "always", { exceptions: ["-"], markers: ["/"] }],
 
         // ✨ 🔧 require or disallow Unicode byte order mark (BOM)
         "unicode-bom": ["error"],
