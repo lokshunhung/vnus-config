@@ -59,7 +59,7 @@ const rulesRecommended: Linter.Config = {
         ],
 
         // 🛑 ✨ too annoying; removed in v3 https://github.com/typescript-eslint/typescript-eslint/issues/2603#issuecomment-699667479
-        "explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
 
         // ✨ 🔧 requires explicit accessibility modifiers on class properties and methods
         "@typescript-eslint/explicit-member-accessibility": [
