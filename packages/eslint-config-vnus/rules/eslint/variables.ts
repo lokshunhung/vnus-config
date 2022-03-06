@@ -9,57 +9,7 @@ import type { Linter } from "eslint";
 // 🛑 Disabled
 
 const rulesVariables: Linter.Config = {
-    rules: {
-        // ✅ disallow deleting variables
-        "no-delete-var": ["error"],
-
-        // ✨ disallow specified global variables
-        "no-restricted-globals": [
-            "error",
-            {
-                name: "isFinite",
-                message: "Use Number.isFinite instead https://github.com/airbnb/javascript#standard-library--isfinite",
-            },
-            {
-                name: "isNaN",
-                message: "Use Number.isNaN instead https://github.com/airbnb/javascript#standard-library--isnan",
-            },
-            ...confusingBrowserGlobals,
-        ],
-
-        // ✨ disallow variable declarations from shadowing variables declared in the outer scope; re-disabled by "@typescript-eslint/no-shadow"
-        "no-shadow": ["error"],
-
-        // ✅ disallow identifiers from shadowing restricted names
-        "no-shadow-restricted-names": ["error"],
-
-        // ✅ disallow the use of undeclared variables unless mentioned in `/*global */` comments
-        "no-undef": ["error"],
-
-        // ✨ 🔧 disallow Initializing to undefined
-        "no-undef-init": ["error"],
-
-        // ✨ ✅ disallow unused variables; re-disabled by "@typescript-eslint/no-unused-vars"
-        "no-unused-vars": [
-            "error",
-            {
-                args: "after-used",
-                argsIgnorePattern: "^_+$",
-                ignoreRestSiblings: true,
-                varsIgnorePattern: "^_+$",
-            },
-        ],
-
-        // ✨ ✅ disallow the use of variables before they are defined; re-disabled by "@typescript-eslint/no-use-before-define"
-        "no-use-before-define": [
-            "error",
-            {
-                functions: false,
-                classes: true,
-                variables: true,
-            },
-        ],
-    },
+    rules: {},
 };
 
 export default rulesVariables;
