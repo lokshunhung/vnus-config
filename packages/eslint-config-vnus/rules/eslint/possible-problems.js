@@ -108,6 +108,9 @@ const rulesPossibleProblems = {
         // ✅ disallow assignments where both sides are exactly the same
         "no-self-assign": ["error"],
 
+        // ✨ disallow comparisons where both sides are exactly the same
+        "no-self-compare": ["error"],
+
         // ✅ disallow returning values from setters
         "no-setter-return": ["error"],
 
@@ -155,6 +158,9 @@ const rulesPossibleProblems = {
                 variables: true,
             },
         ],
+
+        // ✅ disallow useless backreferences in regular expressions
+        "no-useless-backreference": ["error"],
 
         // ✅ require calls to `isNaN()` when checking for `NaN`
         "use-isnan": ["error"],

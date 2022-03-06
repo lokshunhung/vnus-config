@@ -1,4 +1,6 @@
-import customConfig from "../eslint-recommended";
+// @ts-check
+
+const customConfig = require("./index");
 
 describe("Custom config: eslint-recommended", () => {
     test(`all rule names in "eslint:recommended" are present`, () => {
