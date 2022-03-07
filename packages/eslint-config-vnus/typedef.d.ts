@@ -4,20 +4,8 @@ declare module "@typescript-eslint/eslint-plugin/dist/configs/eslint-recommended
     export = _default;
 }
 
-declare module "eslint-config-prettier/@typescript-eslint" {
+declare module "eslint-config-prettier" {
     import type { Linter } from "eslint";
-    declare const _default: Linter.Config;
-    export = _default;
-}
-
-declare module "eslint-config-prettier/index" {
-    import type { Linter } from "eslint";
-    declare const _default: Linter.Config;
-    export = _default;
-}
-
-declare module "eslint-config-prettier/react" {
-    import type { Linter } from "eslint";
-    declare const _default: Linter.Config;
-    export = _default;
+    declare const config: Linter.Config;
+    export = config;
 }
