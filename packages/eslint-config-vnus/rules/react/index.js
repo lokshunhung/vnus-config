@@ -1,9 +1,11 @@
-import type { Linter } from "eslint";
-import rulesCustom from "./react/custom";
-import rulesHooks from "./react/hooks";
-import rulesRecommended from "./react/recommended";
+// @ts-check
 
-const config: Linter.Config = {
+const rulesRecommended = require("./recommended");
+const rulesCustom = require("./custom");
+const rulesHooks = require("./hooks");
+
+/** @type {import("eslint").Linter.Config} */
+const configReact = {
     plugins: ["react", "react-hooks"],
     parserOptions: {
         ecmaFeatures: { jsx: true },
@@ -18,4 +20,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+module.exports = configReact;

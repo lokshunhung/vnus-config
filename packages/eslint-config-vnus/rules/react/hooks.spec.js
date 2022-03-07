@@ -1,4 +1,4 @@
-import customConfig from "../../react/hooks";
+const customConfig = require("./hooks");
 
 describe("Custom config: react/hooks", () => {
     test("contains all rule names from plugin:react-hooks/recommended", () => {
@@ -6,9 +6,9 @@ describe("Custom config: react/hooks", () => {
         expect(originalConfig).toHaveProperty(["configs", "recommended", "rules"]);
 
         const originalRuleNames = Object.keys(originalConfig.configs.recommended.rules);
-        const customRuleNames = Object.keys(customConfig.rules!);
-        customRuleNames.forEach((ruleName) => {
-            expect(originalRuleNames).toContain(ruleName);
+        expect(originalRuleNames).not.toHaveLength(0);
+        originalRuleNames.forEach((ruleName) => {
+            expect(customConfig.rules).toHaveProperty([ruleName]);
         });
     });
 });

@@ -1,21 +1,37 @@
-import type { Linter } from "eslint";
+// @ts-check
 
 // 🔧 Fixable
 // 🛑 Disabled
 
-const rulesCustom: Linter.Config = {
+/** @type {import("eslint").Linter.Config} */
+const rulesCustom = {
     rules: {
         // forbid "button" element without an explicit "type" attribute
         "react/button-has-type": ["error"],
 
-        // enforce a specific function type for function components
+        // 🔧 enforce a specific function type for function components
         "react/function-component-definition": [
             "error",
             { namedComponents: "arrow-function", unnamedComponents: "arrow-function" },
         ],
 
+        // reports when this.state is accessed within setState
+        "react/no-access-state-in-setstate": ["error"],
+
         // prevent usage of Array index in keys
         "react/no-array-index-key": ["error"],
+
+        // 🔧 lifecycle methods should be methods on the prototype, not class fields
+        "react/no-arrow-function-lifecycle": ["error"],
+
+        // 🔧 prevent usage of invalid attributes
+        "react/no-invalid-html-attribute": ["error"],
+
+        // ensure no casing typos were made declaring static class properties and lifecycle methods
+        "react/no-typos": ["error"],
+
+        // prevent creating unstable components inside components
+        "react/no-unstable-nested-components": ["error", { allowAsProps: true }],
 
         // 🔧 prevent extra closing tags for components without children
         "react/self-closing-comp": ["error"],
@@ -31,7 +47,10 @@ const rulesCustom: Linter.Config = {
         "react/jsx-boolean-value": ["error", "never"],
 
         // 🔧 disallow unnecessary JSX expressions when literals alone are sufficient in attributes
-        "react/jsx-curly-brace-presence": ["error", { props: "never", children: "ignore" }],
+        "react/jsx-curly-brace-presence": [
+            "error",
+            { props: "never", children: "ignore", propElementValues: "always" },
+        ],
 
         // 🔧 enforce shorthand form for React fragments
         "react/jsx-fragments": ["error", "syntax"],
@@ -48,6 +67,9 @@ const rulesCustom: Linter.Config = {
             },
         ],
 
+        // prevents JSX context provider values from taking values that will cause needless rerenders
+        "react/jsx-no-constructed-context-values": ["error"],
+
         // prevent usage of `javascript:` URLs
         "react/jsx-no-script-url": ["error"],
 
@@ -59,4 +81,4 @@ const rulesCustom: Linter.Config = {
     },
 };
 
-export default rulesCustom;
+module.exports = rulesCustom;

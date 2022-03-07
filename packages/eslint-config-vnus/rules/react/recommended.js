@@ -1,9 +1,10 @@
-import type { Linter } from "eslint";
+// @ts-check
 
 // 🔧 Fixable
 // 🛑 Disabled
 
-const rulesRecommended: Linter.Config = {
+/** @type {import("eslint").Linter.Config} */
+const rulesRecommended = {
     rules: {
         // 🛑 not useful
         "react/display-name": "off",
@@ -73,4 +74,4 @@ const rulesRecommended: Linter.Config = {
     },
 };
 
-export default rulesRecommended;
+module.exports = rulesRecommended;
