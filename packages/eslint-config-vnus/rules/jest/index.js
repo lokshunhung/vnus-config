@@ -1,4 +1,4 @@
-import type { Linter } from "eslint";
+// @ts-check
 
 // ✅ Recommended
 // 🔧 Fixable
@@ -6,7 +6,8 @@ import type { Linter } from "eslint";
 // ✨ Customized
 // 🛑 Disabled
 
-const config: Linter.Config = {
+/** @type {import("eslint").Linter.Config} */
+const configJest = {
     plugins: ["jest"],
     rules: {
         // ✨ 🔧 prefer `test` over `it`
@@ -14,9 +15,6 @@ const config: Linter.Config = {
 
         // 🛑 ✅ too annoying; no need to expect `expect` assertion
         "jest/expect-expect": "off",
-
-        // ✨ 🔧 enforce lowercase test names
-        "jest/lowercase-name": ["warn", { ignore: ["describe"] }],
 
         // ✨ 🔧 disallow alias methods
         "jest/no-alias-methods": ["warn"],
@@ -60,8 +58,8 @@ const config: Linter.Config = {
         // ✅ disallow manually importing from `__mocks__`
         "jest/no-mocks-import": ["warn"],
 
-        // ✨ disallow specific mathcers & modifiers
-        "jest/no-restricted-matchers": ["warn", { resolves: "Use `expect(await promise)` instead." }],
+        // 🛑 ✨ disallow specific mathcers & modifiers
+        "jest/no-restricted-matchers": "off",
 
         // ✅ disallow using `expect` outside of `it` or `test` blocks
         "jest/no-standalone-expect": ["warn"],
@@ -75,11 +73,26 @@ const config: Linter.Config = {
         // ✨ suggest using `toBeCalledWith()` or `toHaveBeenCalledWith()`
         "jest/prefer-called-with": ["warn"],
 
-        // ✨ 🔧 suggest using `expect.assertions()` OR `expect.hasAssertions()`
+        // ✨ 🔧 suggest using the built-in comparison matchers
+        "jest/prefer-comparison-matcher": ["warn"],
+
+        // ✨ 🔧 suggest using the built-in equality matchers
+        "jest/prefer-equality-matcher": ["warn"],
+
+        // 🛑 ✨ 🔧 suggest using `expect.assertions()` OR `expect.hasAssertions()`
         "jest/prefer-expect-assertions": "off",
+
+        // ✨ 🔧 prefer await expect(...).resolves over expect(await ...) syntax
+        "jest/prefer-expect-resolves": ["warn"],
 
         // ✨ suggest having hooks before any test cases
         "jest/prefer-hooks-on-top": ["warn"],
+
+        // ✨ 🔧 enforce lowercase test names
+        "jest/lowercase-name": ["warn", { ignore: ["describe"] }],
+
+        // ✨ prefer including a hint with external snapshots
+        "jest/prefer-snapshot-hint": ["warn"],
 
         // ✨ 🔧 suggest using `jest.spyOn()`
         "jest/prefer-spy-on": ["warn"],
@@ -87,16 +100,13 @@ const config: Linter.Config = {
         // ✨ 🔧 suggest using `toStrictEqual()`
         "jest/prefer-strict-equal": ["warn"],
 
-        // ✨ 🔧 suggest using `toBeNull()`
-        "jest/prefer-to-be-null": ["warn"],
-
-        // ✨ 🔧 suggest using `toBeUndefined()`
-        "jest/prefer-to-be-undefined": ["warn"],
+        // ✨ 🔧 suggest using toBe() for primitive literals
+        "jest/prefer-to-be": ["warn"],
 
         // ✨ 🔧 suggest using `toContain()`
         "jest/prefer-to-contain": ["warn"],
 
-        // ✨ f suggest using `toHaveLength()`
+        // ✨ 🔧 suggest using `toHaveLength()`
         "jest/prefer-to-have-length": ["warn"],
 
         // ✨ 🔧 suggest using `test.todo`
@@ -105,11 +115,8 @@ const config: Linter.Config = {
         // ✨ require test cases and hooks to be inside a `describe` block
         "jest/require-top-level-describe": ["warn"],
 
-        // enforces unbound methods are called with their expected scope
-        "jest/unbound-method": ["warn"],
-
-        // 🛑 ✅ too annoying; no need to enforce valid `describe()` callback
-        "jest/valid-describe": "off",
+        // ✅ too annoying; no need to enforce valid `describe()` callback
+        "jest/valid-describe-callback": ["warn"],
 
         // ✅ enforce valid `expect()` usage
         "jest/valid-expect": ["warn"],
@@ -117,12 +124,16 @@ const config: Linter.Config = {
         // ✅ enforce having return statement when testing with promises
         "jest/valid-expect-in-promise": ["warn"],
 
-        // ✅ 🔧 enforce valid titles
+        // 🛑 ✅ 🔧 enforce valid titles
         "jest/valid-title": "off",
+
+        // ✨ enforces unbound methods are called with their expected scope
+        "jest/unbound-method": ["warn"],
 
         //
         // Overrides
         //
+
         "no-shadow": "off",
         "@typescript-eslint/no-non-null-assertion": "off",
         "@typescript-eslint/no-shadow": "off",
@@ -130,4 +141,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+module.exports = configJest;
