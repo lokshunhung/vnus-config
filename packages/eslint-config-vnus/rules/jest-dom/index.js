@@ -1,9 +1,10 @@
-import type { Linter } from "eslint";
+// @ts-check
 
 // 👍 indicates that a rule is recommended for all users
 // 🔧 indicates that a rule is fixable
 
-const config: Linter.Config = {
+/** @type {import("eslint").Linter.Config} */
+const configJestDOM = {
     plugins: ["jest-dom"],
     rules: {
         // 👍 🔧 prefer toBeChecked over checking attributes
@@ -41,4 +42,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+module.exports = configJestDOM;

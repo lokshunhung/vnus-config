@@ -1,4 +1,4 @@
-import customConfig from "../jest-dom-recommended";
+const customConfig = require("./index");
 
 describe(`Custom config: jest-dom-recommended`, () => {
     test("all rule names in plugin:jest-dom/recommended are present", () => {
