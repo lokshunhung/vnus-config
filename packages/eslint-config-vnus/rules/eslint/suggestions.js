@@ -90,7 +90,35 @@ const rulesSuggestions = {
             {
                 object: "require",
                 property: "ensure",
-                message: "Please use import() instead.",
+                message: "Use import() instead of require.ensure().",
+            },
+            {
+                property: "substring",
+                message: "Use .slice instead of .substring.",
+            },
+            {
+                property: "substr",
+                message: "Use .slice instead of .substr.",
+            },
+            {
+                object: "assert",
+                property: "equal",
+                message: "Use assert.strictEqual instead of assert.equal.",
+            },
+            {
+                object: "assert",
+                property: "notEqual",
+                message: "Use assert.notStrictEqual instead of assert.notEqual.",
+            },
+            {
+                object: "assert",
+                property: "deepEqual",
+                message: "Use assert.deepStrictEqual instead of assert.deepEqual.",
+            },
+            {
+                object: "assert",
+                property: "notDeepEqual",
+                message: "Use assert.notDeepStrictEqual instead of assert.notDeepEqual.",
             },
         ],
 
@@ -124,6 +152,12 @@ const rulesSuggestions = {
             },
         ],
 
+        // ✨ disallow assignment operators in `return` statements
+        "no-return-assign": ["error"],
+
+        // ✨ disallow `javascript:` urls
+        "no-script-url": ["error"],
+
         // ✅ disallow identifiers from shadowing restricted names
         "no-shadow-restricted-names": ["error"],
 
@@ -132,6 +166,12 @@ const rulesSuggestions = {
 
         // ✨ 🔧 disallow Initializing to undefined
         "no-undef-init": ["error"],
+
+        // ✨ disallow the use of `undefined` as an identifier
+        "no-undefined": ["error"],
+
+        // ✨ disallow ternary operators when simpler alternatives exist
+        "no-unneeded-ternary": ["error"],
 
         // ✨ ✅ 🔧 warn on unused labels
         "no-unused-labels": ["warn"],
@@ -160,20 +200,20 @@ const rulesSuggestions = {
         // ✨ 🔧 require or disallow method and property shorthand syntax for object literals
         "object-shorthand": ["error"],
 
-        // TODO: "one-var"
-
         // ✨ 🔧 require `const` declarations for variables that are never reassigned after declared
         "prefer-const": ["error"],
 
         // ✨ 🔧 disallow the use of `Math.pow` in favor of the `**` operator
         "prefer-exponentiation-operator": ["error"],
 
-        // TODO: "prefer-object-has-own" warn
+        // ✨ 🔧 disallow use of `Object.prototype.hasOwnProperty.call()` and prefer use of `Object.hasOwn()`
+        "prefer-object-has-own": ["error"],
 
         // ✨ 🔧 disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead
         "prefer-object-spread": ["error"],
 
-        // TODO: "prefer-promise-reject-errors"
+        // ✨ require using Error objects as Promise rejection reasons
+        "prefer-promise-reject-errors": ["error"],
 
         // ✨ 🔧 disallow use of the `RegExp` constructor in favor of regular expression literals
         "prefer-regex-literals": ["error", { disallowRedundantWrapping: true }],
