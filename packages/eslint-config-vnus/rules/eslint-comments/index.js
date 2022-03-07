@@ -1,6 +1,7 @@
-import type { Linter } from "eslint";
+// @ts-check
 
-const config: Linter.Config = {
+/** @type {import("eslint").Linter.Config} */
+const configESLintComments = {
     plugins: ["eslint-comments"],
     rules: {
         "eslint-comments/disable-enable-pair": "off",
@@ -20,4 +21,4 @@ const config: Linter.Config = {
     },
 };
 
-export default config;
+module.exports = configESLintComments;
